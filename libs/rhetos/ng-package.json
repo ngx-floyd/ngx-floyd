@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/libs/rhetos",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdId": "floyd.rhetos",
+    "umdModuleIds": {
+      "@ngx-floyd/core": "floyd.core"
+    }
+  }
+}

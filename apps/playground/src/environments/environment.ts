@@ -2,8 +2,16 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { RhetosConfig } from '@ngx-floyd/rhetos';
+
 export const environment = {
   production: false,
+  rhetos: <RhetosConfig>{
+    url: 'http://localhost/Centrix2Rhetos/',
+    withCredentials: true,
+    suppressCoercedUndefined: false,
+    delete400OK: false,
+  },
 };
 
 /*
