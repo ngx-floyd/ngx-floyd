@@ -46,6 +46,13 @@ export class RhetosMetadataService {
     return this._cache.get(key) as StructureMetadata;
   }
 
+  getAll(): Array<{ key: string; meta: StructureMetadata }> {
+    return Array.from(this._cache.entries()).map((m) => ({
+      key: m[0],
+      meta: m[1],
+    }));
+  }
+
   loadFromServer(): Observable<void> {
     this.clear();
     const url = this._url + 'Rest/Common/GetStructureMetadata/';
@@ -60,13 +67,6 @@ export class RhetosMetadataService {
         });
       })
     );
-  }
-
-  getAll(): Array<{ key: string; meta: StructureMetadata }> {
-    return Array.from(this._cache.entries()).map((m) => ({
-      key: m[0],
-      meta: m[1],
-    }));
   }
 
   clear(): void {

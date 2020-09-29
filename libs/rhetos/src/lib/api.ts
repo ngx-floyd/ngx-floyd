@@ -13,7 +13,7 @@ import { StructureInfo } from './structure/info';
 import { Entity } from './entity/interfaces';
 
 @Injectable({ providedIn: FloRhetosModule })
-export class RhetosRest {
+export class RhetosApi {
   constructor(protected rhetosRest: RhetosRestService) {}
 
   forAction<T>(info: StructureInfo<T>): ActionService<T> {
@@ -28,10 +28,6 @@ export class RhetosRest {
     return new EntityService(info, this.rhetosRest);
   }
 
-  forTemplaterReport<T>(info: StructureInfo<T>): TemplaterReportService<T> {
-    return new TemplaterReportService(info, this.rhetosRest);
-  }
-
   forFunction<T, R>(info: FunctionInfo<T, R>): FunctionService<T, R> {
     return new FunctionService<T, R>(info, this.rhetosRest);
   }
@@ -42,5 +38,9 @@ export class RhetosRest {
 
   forComplex<T>(info: ComplexInfo<T>): ComplexService<T> {
     return new ComplexService<T>(info, this.rhetosRest);
+  }
+
+  forTemplaterReport<T>(info: StructureInfo<T>): TemplaterReportService<T> {
+    return new TemplaterReportService(info, this.rhetosRest);
   }
 }

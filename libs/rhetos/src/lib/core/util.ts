@@ -1,5 +1,5 @@
 import { isObject } from '@ngx-floyd/core';
-import { StructureInfo } from '../..';
+import { StructureInfo } from '../structure/info';
 
 export type InfoOrKey<T = unknown> = StructureInfo<T> | string;
 

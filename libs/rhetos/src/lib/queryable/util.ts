@@ -1,14 +1,13 @@
 import { HttpParams } from '@angular/common/http';
 import { FloSafeAny } from '@ngx-floyd/core';
+import { getKey } from '../core/util';
 import {
-  RhetosQueryParams,
-  RhetosSortModel,
-  RhetosFilter,
   GenericFilter,
   PredefinedFilter,
+  RhetosFilter,
+  RhetosQueryParams,
+  RhetosSortModel,
 } from './interfaces';
-import { isGenericFilter, isPredefinedFilter } from './query-params';
-import { getKey } from '../core/util';
 
 export function getQueryHttpParams(query?: RhetosQueryParams): HttpParams {
   if (!query) return new HttpParams();
@@ -41,6 +40,14 @@ export function getSortString(value?: RhetosSortModel[]): string {
   } else {
     return getDefaultSort();
   }
+}
+
+export function isGenericFilter<T = unknown>(filter: RhetosFilter<T>): filter is GenericFilter<T> {
+  return filter.hasOwnProperty('operation');
+}
+
+export function isPredefinedFilter<T>(filter: RhetosFilter): filter is PredefinedFilter<T> {
+  return filter.hasOwnProperty('info');
 }
 
 export function getFiltersString(filters?: RhetosFilter[]): string | undefined {

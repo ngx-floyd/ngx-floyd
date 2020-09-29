@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityService, QueryableService, RhetosRest } from '@ngx-floyd/rhetos';
+import { EntityService, QueryableService, RhetosApi, RhetosQueryFn } from '@ngx-floyd/rhetos';
 import { Observable } from 'rxjs';
 import { Adresar, EvidencijaPismena } from '../core/centrix-rhetos-model';
 
@@ -14,7 +14,7 @@ export class RhetosRestComponent implements OnInit {
 
   pismena$: Observable<EvidencijaPismena.PismenoBrowse[]>;
 
-  constructor(private rhetosRest: RhetosRest) {
+  constructor(private rhetosRest: RhetosApi) {
     this.pismenoBrowseService = this.rhetosRest.forQueryable(EvidencijaPismena.PismenoBrowseInfo);
     this.fizickaOsobaService = this.rhetosRest.forEntity(Adresar.FizickaOsobaInfo);
   }
@@ -45,7 +45,10 @@ export class RhetosRestComponent implements OnInit {
   }
 
   recordsAndCount() {
-    this.pismenoBrowseService.recordsWithCount((query) => query.take(10)).subscribe(console.log);
+    const pismenoQueryFn: RhetosQueryFn<EvidencijaPismena.PismenoBrowse> = (query) =>
+      query.filterBy(EvidencijaPismena.PismenoBrowseSearchInfo, { Pattern: 'test' });
+
+    this.pismenoBrowseService.recordsWithCount(pismenoQueryFn).subscribe(console.log);
   }
 
   // ENTITY

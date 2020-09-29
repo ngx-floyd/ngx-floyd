@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import {
-  RhetosRest,
+  RhetosApi,
   RhetosRestService,
   EntityService,
   QueryableService,
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     EvidencijaPismena.DocumentTemplatePismeno
   >;
 
-  constructor(private rhetosRest: RhetosRest) {
+  constructor(private rhetosRest: RhetosApi) {
     this.pismenoBrowseService = this.rhetosRest.forQueryable(EvidencijaPismena.PismenoBrowseInfo);
     this.drzavaService = this.rhetosRest.forEntity(Adresar.DrzavaInfo);
     this.inserNaseljeService = this.rhetosRest.forAction(Adresar.QuickInsertNaseljeInfo);
