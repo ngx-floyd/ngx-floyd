@@ -1,6 +1,6 @@
 {
   "name": "@ngx-floyd/core",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "dependencies": {
     "uuid": "^8.3.0",
     "tslib": "^2.0.0"
