@@ -13,7 +13,7 @@ import { StructureInfo } from './structure/info';
 import { Entity } from './entity/interfaces';
 
 @Injectable({ providedIn: FloRhetosModule })
-export class RhetosApi {
+export class RhetosRest {
   constructor(protected rhetosRest: RhetosRestService) {}
 
   forAction<T>(info: StructureInfo<T>): ActionService<T> {

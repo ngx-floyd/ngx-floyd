@@ -9,8 +9,8 @@ import {
   TotalCount,
 } from './interfaces';
 import { RhetosQueryBuilder } from './query-builder';
-import { Entity } from '../entity/interfaces';
 import { getQueryHttpParams } from './util';
+import { Entity } from '../entity/interfaces';
 
 export class QueryableService<T extends Entity> extends StructureService {
   getbyId(id: string): Observable<T> {

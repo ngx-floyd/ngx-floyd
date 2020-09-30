@@ -9,6 +9,7 @@ export * from './lib/complex/rest';
 
 export * from './lib/entity/interfaces';
 export * from './lib/entity/service';
+export * from './lib/entity/util';
 
 export * from './lib/function/info';
 export * from './lib/function/rest';
