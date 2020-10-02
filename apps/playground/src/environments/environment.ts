@@ -6,12 +6,10 @@ import { RhetosConfig } from '@ngx-floyd/rhetos';
 
 export const environment = {
   production: false,
-  rhetos: <RhetosConfig>{
+  rhetos: {
     url: 'http://localhost/Centrix2Rhetos/',
     withCredentials: true,
-    suppressCoercedUndefined: false,
-    delete400OK: false,
-  },
+  } as RhetosConfig,
 };
 
 /*

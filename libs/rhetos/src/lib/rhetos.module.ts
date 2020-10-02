@@ -4,15 +4,15 @@ import { RHETOS_CONFIG, RhetosConfig } from './core/config';
 import { MsDateInterceptor } from './core/interceptors/ms-date';
 import { NullToUndefinedInterceptor } from './core/interceptors/null-to-undefined';
 import { RhetosWithCredentialsInterceptor } from './core/interceptors/with-credentials';
-import { RhetosMetadataService } from './core/metadata';
+import { RhetosMetadata } from './core/metadata';
 
 @NgModule({
   imports: [HttpClientModule],
 })
-export class FloRhetosModule {
-  static withConfig(config: RhetosConfig): ModuleWithProviders<FloRhetosModule> {
+export class RhetosModule {
+  static withConfig(config: RhetosConfig): ModuleWithProviders<RhetosModule> {
     return {
-      ngModule: FloRhetosModule,
+      ngModule: RhetosModule,
       providers: createRhetosProviders(config),
     };
   }
@@ -39,14 +39,14 @@ export function createRhetosProviders(config: RhetosConfig): (Provider | Type<an
     });
   }
 
-  providers.push(RhetosMetadataService);
+  providers.push(RhetosMetadata);
 
   // TODO: metadata should be included in the bundle
   if (!config.suppressMetadataLoadOnAppInit) {
     providers.push({
       provide: APP_INITIALIZER,
       useFactory: loadMetadata,
-      deps: [RhetosMetadataService, RHETOS_CONFIG],
+      deps: [RhetosMetadata, RHETOS_CONFIG],
       multi: true,
     });
   }
@@ -68,8 +68,8 @@ export function createRhetosProviders(config: RhetosConfig): (Provider | Type<an
   return providers;
 }
 
-export function loadMetadata(metadataService: RhetosMetadataService, config: RhetosConfig) {
+export function loadMetadata(metadataService: RhetosMetadata, config: RhetosConfig) {
   return function () {
-    return metadataService.loadFromServer().toPromise();
+    return metadataService.load().toPromise();
   };
 }

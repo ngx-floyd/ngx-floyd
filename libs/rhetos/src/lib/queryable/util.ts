@@ -59,7 +59,7 @@ export function getFiltersString(filters?: RhetosFilter[]): string | undefined {
 
       // Remove null and undefined values from generic array filter
       if (Array.isArray(copy.value)) {
-        copy.value = copy.value.filter((v) => v !== undefined && v !== null);
+        copy.value = copy.value.filter((v) => v !== undefined);
       }
 
       // filtersArray.push(JSON.stringify(copy));

@@ -1,4 +1,4 @@
-/* tslint:disable:no-empty-interface class-name */
+/* tslint:disable:no-empty-interface class-name no-namespace */
 
 import {
   createStructureInfo,
@@ -7,7 +7,7 @@ import {
   createComplexGetInfo,
 } from '@ngx-floyd/rhetos';
 
-export module Common {
+export namespace Common {
   export const AuditingReportBaseInfo = createStructureInfo<Common.AuditingReportBase>(
     'Common/AuditingReportBase'
   );
@@ -689,7 +689,7 @@ export module Common {
   export interface SystemRequiredRole {}
 }
 
-export module Adresar {
+export namespace Adresar {
   export const BrojcanaOznakaStvarateljaPismenaInfo = createStructureInfo<
     Adresar.BrojcanaOznakaStvarateljaPismena
   >('Adresar/BrojcanaOznakaStvarateljaPismena');
@@ -766,6 +766,7 @@ export module Adresar {
   export interface Zupanija {
     ID: string;
     Naziv: string;
+    Provjereno?: boolean;
     Active?: boolean;
   }
 
@@ -1565,46 +1566,6 @@ export module Adresar {
   );
   export interface MBG_MbgFilter {}
 
-  export const OIB_Mod11_10FilterInfo = createStructureInfo<Adresar.OIB_Mod11_10Filter>(
-    'Adresar/OIB_Mod11_10Filter'
-  );
-  export interface OIB_Mod11_10Filter {}
-
-  export const DvoslovnaOznaka_RegExMatchFilterInfo = createStructureInfo<
-    Adresar.DvoslovnaOznaka_RegExMatchFilter
-  >('Adresar/DvoslovnaOznaka_RegExMatchFilter');
-  export interface DvoslovnaOznaka_RegExMatchFilter {}
-
-  export const TroslovnaOznaka_RegExMatchFilterInfo = createStructureInfo<
-    Adresar.TroslovnaOznaka_RegExMatchFilter
-  >('Adresar/TroslovnaOznaka_RegExMatchFilter');
-  export interface TroslovnaOznaka_RegExMatchFilter {}
-
-  export const BrojcanaOznaka_RegExMatchFilterInfo = createStructureInfo<
-    Adresar.BrojcanaOznaka_RegExMatchFilter
-  >('Adresar/BrojcanaOznaka_RegExMatchFilter');
-  export interface BrojcanaOznaka_RegExMatchFilter {}
-
-  export const MB_RegExMatchFilterInfo = createStructureInfo<Adresar.MB_RegExMatchFilter>(
-    'Adresar/MB_RegExMatchFilter'
-  );
-  export interface MB_RegExMatchFilter {}
-
-  export const MBS_RegExMatchFilterInfo = createStructureInfo<Adresar.MBS_RegExMatchFilter>(
-    'Adresar/MBS_RegExMatchFilter'
-  );
-  export interface MBS_RegExMatchFilter {}
-
-  export const MBG_RegExMatchFilterInfo = createStructureInfo<Adresar.MBG_RegExMatchFilter>(
-    'Adresar/MBG_RegExMatchFilter'
-  );
-  export interface MBG_RegExMatchFilter {}
-
-  export const OIB_RegExMatchFilterInfo = createStructureInfo<Adresar.OIB_RegExMatchFilter>(
-    'Adresar/OIB_RegExMatchFilter'
-  );
-  export interface OIB_RegExMatchFilter {}
-
   export const MaxJednaAktivnaVerzijaInfo = createStructureInfo<Adresar.MaxJednaAktivnaVerzija>(
     'Adresar/MaxJednaAktivnaVerzija'
   );
@@ -1669,9 +1630,49 @@ export module Adresar {
     'Adresar/SystemRequiredKontakt'
   );
   export interface SystemRequiredKontakt {}
+
+  export const OIB_Mod11_10FilterInfo = createStructureInfo<Adresar.OIB_Mod11_10Filter>(
+    'Adresar/OIB_Mod11_10Filter'
+  );
+  export interface OIB_Mod11_10Filter {}
+
+  export const DvoslovnaOznaka_RegExMatchFilterInfo = createStructureInfo<
+    Adresar.DvoslovnaOznaka_RegExMatchFilter
+  >('Adresar/DvoslovnaOznaka_RegExMatchFilter');
+  export interface DvoslovnaOznaka_RegExMatchFilter {}
+
+  export const TroslovnaOznaka_RegExMatchFilterInfo = createStructureInfo<
+    Adresar.TroslovnaOznaka_RegExMatchFilter
+  >('Adresar/TroslovnaOznaka_RegExMatchFilter');
+  export interface TroslovnaOznaka_RegExMatchFilter {}
+
+  export const BrojcanaOznaka_RegExMatchFilterInfo = createStructureInfo<
+    Adresar.BrojcanaOznaka_RegExMatchFilter
+  >('Adresar/BrojcanaOznaka_RegExMatchFilter');
+  export interface BrojcanaOznaka_RegExMatchFilter {}
+
+  export const MB_RegExMatchFilterInfo = createStructureInfo<Adresar.MB_RegExMatchFilter>(
+    'Adresar/MB_RegExMatchFilter'
+  );
+  export interface MB_RegExMatchFilter {}
+
+  export const MBS_RegExMatchFilterInfo = createStructureInfo<Adresar.MBS_RegExMatchFilter>(
+    'Adresar/MBS_RegExMatchFilter'
+  );
+  export interface MBS_RegExMatchFilter {}
+
+  export const MBG_RegExMatchFilterInfo = createStructureInfo<Adresar.MBG_RegExMatchFilter>(
+    'Adresar/MBG_RegExMatchFilter'
+  );
+  export interface MBG_RegExMatchFilter {}
+
+  export const OIB_RegExMatchFilterInfo = createStructureInfo<Adresar.OIB_RegExMatchFilter>(
+    'Adresar/OIB_RegExMatchFilter'
+  );
+  export interface OIB_RegExMatchFilter {}
 }
 
-export module Centrix1Migracija {
+export namespace Centrix1Migracija {
   export const InternaDostavnaKnjigaPismenaInfo = createStructureInfo<
     Centrix1Migracija.InternaDostavnaKnjigaPismena
   >('Centrix1Migracija/InternaDostavnaKnjigaPismena');
@@ -1721,7 +1722,7 @@ export module Centrix1Migracija {
   }
 }
 
-export module EvidencijaPismena {
+export namespace EvidencijaPismena {
   export const DocumentTemplateInfo = createStructureInfo<EvidencijaPismena.DocumentTemplate>(
     'EvidencijaPismena/DocumentTemplate'
   );
@@ -7278,9 +7279,9 @@ export module EvidencijaPismena {
   export interface SystemRequiredEntity {}
 }
 
-export module EvidencijaPismenaHelpers {}
+export namespace EvidencijaPismenaHelpers {}
 
-export module Ustrojstvo {
+export namespace Ustrojstvo {
   export const StatusPismenaMoguceKorisnickeGrupeInfo = createStructureInfo<
     Ustrojstvo.StatusPismenaMoguceKorisnickeGrupe
   >('Ustrojstvo/StatusPismenaMoguceKorisnickeGrupe');
@@ -9575,16 +9576,6 @@ export module Ustrojstvo {
     ID?: string;
   }
 
-  export const Oib_Mod11_10FilterInfo = createStructureInfo<Ustrojstvo.Oib_Mod11_10Filter>(
-    'Ustrojstvo/Oib_Mod11_10Filter'
-  );
-  export interface Oib_Mod11_10Filter {}
-
-  export const Oib_RegExMatchFilterInfo = createStructureInfo<Ustrojstvo.Oib_RegExMatchFilter>(
-    'Ustrojstvo/Oib_RegExMatchFilter'
-  );
-  export interface Oib_RegExMatchFilter {}
-
   export const UstrojstvenaJedinica_AllowedRelation_USastavuInfo = createStructureInfo<
     Ustrojstvo.UstrojstvenaJedinica_AllowedRelation_USastavu
   >('Ustrojstvo/UstrojstvenaJedinica_AllowedRelation_USastavu');
@@ -10392,6 +10383,16 @@ export module Ustrojstvo {
     ActiveUntil?: Date;
   }
 
+  export const Oib_Mod11_10FilterInfo = createStructureInfo<Ustrojstvo.Oib_Mod11_10Filter>(
+    'Ustrojstvo/Oib_Mod11_10Filter'
+  );
+  export interface Oib_Mod11_10Filter {}
+
+  export const Oib_RegExMatchFilterInfo = createStructureInfo<Ustrojstvo.Oib_RegExMatchFilter>(
+    'Ustrojstvo/Oib_RegExMatchFilter'
+  );
+  export interface Oib_RegExMatchFilter {}
+
   export const RadnoTijeloOvlasteniSluzbenici_ChangesActiveUntilInfo = createStructureInfo<
     Ustrojstvo.RadnoTijeloOvlasteniSluzbenici_ChangesActiveUntil
   >('Ustrojstvo/RadnoTijeloOvlasteniSluzbenici_ChangesActiveUntil');
@@ -10470,7 +10471,7 @@ export module Ustrojstvo {
   export interface SystemRequiredEntity {}
 }
 
-export module KorisnickaPolja {
+export namespace KorisnickaPolja {
   export const PredmetInfo = createStructureInfo<KorisnickaPolja.Predmet>(
     'KorisnickaPolja/Predmet'
   );
@@ -10683,7 +10684,7 @@ export module KorisnickaPolja {
   export interface SystemRequiredKorisnik {}
 }
 
-export module Connector {
+export namespace Connector {
   export const ServiceLogInfo = createStructureInfo<Connector.ServiceLog>('Connector/ServiceLog');
   export interface ServiceLog {
     ID: string;
@@ -10703,9 +10704,9 @@ export module Connector {
   }
 }
 
-export module Centrix2 {}
+export namespace Centrix2 {}
 
-export module Centrix2DMS {
+export namespace Centrix2DMS {
   export const PrincipalScanSettingsInfo = createStructureInfo<Centrix2DMS.PrincipalScanSettings>(
     'Centrix2DMS/PrincipalScanSettings'
   );
@@ -10848,7 +10849,7 @@ export module Centrix2DMS {
   }
 }
 
-export module LightDMS {
+export namespace LightDMS {
   export const DmsDocumentInfoInfo = createStructureInfo<LightDMS.DmsDocumentInfo>(
     'LightDMS/DmsDocumentInfo'
   );
@@ -11081,7 +11082,7 @@ export module LightDMS {
   export interface SystemRequiredVersionNumber {}
 }
 
-export module ObradaPismena {
+export namespace ObradaPismena {
   export const OdlaganjeURokovnikInfo = createStructureInfo<ObradaPismena.OdlaganjeURokovnik>(
     'ObradaPismena/OdlaganjeURokovnik'
   );
@@ -12153,7 +12154,7 @@ export module ObradaPismena {
   export interface SystemRequiredActive {}
 }
 
-export module CmisDms {
+export namespace CmisDms {
   export const PredmetInfoInfo = createStructureInfo<CmisDms.PredmetInfo>('CmisDms/PredmetInfo');
   export interface PredmetInfo {
     ID: string;
@@ -12241,7 +12242,7 @@ export module CmisDms {
   }
 }
 
-export module DostavaURad {
+export namespace DostavaURad {
   export const DodjelaURadInfo = createStructureInfo<DostavaURad.DodjelaURad>(
     'DostavaURad/DodjelaURad'
   );
@@ -12897,7 +12898,7 @@ export module DostavaURad {
   export interface SystemRequiredActive {}
 }
 
-export module KnjigaPrimljenePoste {
+export namespace KnjigaPrimljenePoste {
   export const PosiljkaInfo = createStructureInfo<KnjigaPrimljenePoste.Posiljka>(
     'KnjigaPrimljenePoste/Posiljka'
   );
@@ -13317,7 +13318,7 @@ export module KnjigaPrimljenePoste {
   export interface SystemRequiredEntity {}
 }
 
-export module Ocr {
+export namespace Ocr {
   export const OcrStartedInfo = createStructureInfo<Ocr.OcrStarted>('Ocr/OcrStarted');
   export interface OcrStarted {
     ID: string;
@@ -13398,7 +13399,7 @@ export module Ocr {
   }
 }
 
-export module Otprema2 {
+export namespace Otprema2 {
   export const GrupaPrimateljaInfo = createStructureInfo<Otprema2.GrupaPrimatelja>(
     'Otprema2/GrupaPrimatelja'
   );
@@ -15458,7 +15459,7 @@ export module Otprema2 {
   export interface SystemRequiredGrupaPrimatelja {}
 }
 
-export module PovjerljiviUrudzbeni {
+export namespace PovjerljiviUrudzbeni {
   export const StupanjTajnostiInfo = createStructureInfo<PovjerljiviUrudzbeni.StupanjTajnosti>(
     'PovjerljiviUrudzbeni/StupanjTajnosti'
   );
@@ -15748,13 +15749,13 @@ export module PovjerljiviUrudzbeni {
   export interface SystemRequiredZaposlenik {}
 }
 
-export module Reports {}
+export namespace Reports {}
 
-export module Otprema {}
+export namespace Otprema {}
 
-export module Centrix2ImportPodataka {}
+export namespace Centrix2ImportPodataka {}
 
-export module PovijestUvida {
+export namespace PovijestUvida {
   export const PovijestUvidaEntitetaInfo = createStructureInfo<PovijestUvida.PovijestUvidaEntiteta>(
     'PovijestUvida/PovijestUvidaEntiteta'
   );
@@ -15799,7 +15800,7 @@ export module PovijestUvida {
   export interface SystemRequiredDatum {}
 }
 
-export module ZupIt {
+export namespace ZupIt {
   export const PostupakZupItInfoInfo = createStructureInfo<ZupIt.PostupakZupItInfo>(
     'ZupIt/PostupakZupItInfo'
   );

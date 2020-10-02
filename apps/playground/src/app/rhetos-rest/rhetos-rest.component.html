@@ -1,1 +1,15 @@
-{{ pismena$ | async | json }}
+<label>
+  Search:
+  <input name="search" [(ngModel)]="search" (ngModelChange)="onSearchInputChange()" />
+</label>
+<label>
+  Order by:
+  <select name="orderBy" [(ngModel)]="orderBy" (ngModelChange)="onOrderByChange()">
+    <option></option>
+    <option *ngFor="let order of orderByOptions" [value]="order">{{ order }}</option>
+  </select>
+</label>
+<p>Županije:</p>
+<ul>
+  <li *ngFor="let zupanija of zupanije$ | async">{{ zupanija.Naziv }}</li>
+</ul>

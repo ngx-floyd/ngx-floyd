@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EntityService, QueryableService, RhetosRest, RhetosQueryFn } from '@ngx-floyd/rhetos';
-import { Observable } from 'rxjs';
-import { Adresar, EvidencijaPismena } from '../core/centrix-rhetos-model';
+import { QueryableService, RhetosMetadata, RhetosRest } from '@ngx-floyd/rhetos';
+import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
+import { Adresar } from '../core/rhetos-model';
 
 @Component({
   selector: 'ngx-floyd-rhetos-rest',
@@ -9,55 +10,43 @@ import { Adresar, EvidencijaPismena } from '../core/centrix-rhetos-model';
   styleUrls: ['./rhetos-rest.component.less'],
 })
 export class RhetosRestComponent implements OnInit {
-  pismena$: Observable<EvidencijaPismena.PismenoBrowse[]>;
-  private drzavaService: QueryableService<Adresar.DrzavaBrowse>;
+  private search$ = new BehaviorSubject<string>('');
+  private orderBy$ = new BehaviorSubject<keyof Adresar.Zupanija | null>(null);
+  private zupanijaQueryableService: QueryableService<Adresar.Zupanija>;
 
-  constructor(private rhetosRest: RhetosRest) {
-    this.drzavaService = this.rhetosRest.forEntity(EvidencijaPismena.PismenoBrowseInfo);
+  zupanije$: Observable<Adresar.Zupanija[]>;
+  search = '';
+  orderByOptions: string[];
+  orderBy: keyof Adresar.Zupanija | null = null;
+
+  constructor(private rhetosRest: RhetosRest, private rhetosMetadata: RhetosMetadata) {
+    this.zupanijaQueryableService = this.rhetosRest.forQueryable(Adresar.ZupanijaInfo);
+    this.orderByOptions = Object.keys(this.rhetosMetadata.for(Adresar.ZupanijaInfo).properties);
   }
 
   ngOnInit(): void {
-    // this.getById();
-    // this.getAll();
-    // this.count();
-    // this.records();
-    // this.recordsAndCount();
+    this.zupanije$ = combineLatest([this.search$.pipe(debounceTime(400)), this.orderBy$]).pipe(
+      switchMap(([search, order]) =>
+        this.zupanijaQueryableService.records((query) => {
+          if (order) {
+            query.orderBy(order);
+          }
+
+          if (search !== '') {
+            query.where('Naziv', 'Contains', search);
+          }
+
+          return query;
+        })
+      )
+    );
   }
 
-  // // QUERYABLE
-  // getById() {
-  //   this.pismenoBrowseService
-  //     .getbyId('72f48f78-5c35-419f-991e-63a9fdb2d8c6')
-  //     .subscribe(console.log);
-  // }
-  //
-  // getAll() {
-  //   this.pismenoBrowseService.getAll().subscribe(console.log);
-  // }
-  //
-  // count() {
-  //   this.pismenoBrowseService
-  //     .count((query) => query.where('DatumStatusa', 'DateIn', '2018'))
-  //     .subscribe(console.log);
-  // }
-  //
-  // recordsAndCount() {
-  //   const pismenoQueryFn: RhetosQueryFn<EvidencijaPismena.PismenoBrowse> = (query) =>
-  //     query.filterBy(EvidencijaPismena.PismenoBrowseSearchInfo, { Pattern: 'test' });
-  //
-  //   this.pismenoBrowseService.recordsWithCount(pismenoQueryFn).subscribe(console.log);
-  // }
-  //
-  // // ENTITY
-  // insert() {
-  //   const osoba: Adresar.FizickaOsoba = {
-  //     ID: 'nekiGuid',
-  //     Ime: 'Hrvoje',
-  //     Prezime: 'Test',
-  //   };
-  //
-  //   this.fizickaOsobaService.insert(osoba);
-  // }
-  //
-  // records() {}
+  onSearchInputChange() {
+    this.search$.next(this.search);
+  }
+
+  onOrderByChange() {
+    this.orderBy$.next(this.orderBy);
+  }
 }

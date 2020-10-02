@@ -8,11 +8,11 @@ import { FunctionService } from './function/rest';
 import { QueryableService } from './queryable/rest';
 import { TemplaterReportService } from './report/rest';
 import { RhetosRestService } from './core/rest';
-import { FloRhetosModule } from './rhetos.module';
+import { RhetosModule } from './rhetos.module';
 import { StructureInfo } from './structure/info';
 import { Entity } from './entity/interfaces';
 
-@Injectable({ providedIn: FloRhetosModule })
+@Injectable({ providedIn: RhetosModule })
 export class RhetosRest {
   constructor(protected rhetosRest: RhetosRestService) {}
 

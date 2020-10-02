@@ -32,7 +32,7 @@ export interface PropertyMetadata {
 }
 
 @Injectable()
-export class RhetosMetadataService {
+export class RhetosMetadata {
   private _cache = new Map<string, StructureMetadata>();
   private _url: string;
 
@@ -40,20 +40,20 @@ export class RhetosMetadataService {
     this._url = config.url;
   }
 
-  get<T>(infoOrKey: StructureInfo<T> | string): StructureMetadata<T> {
+  for<T>(infoOrKey: StructureInfo<T> | string): StructureMetadata<T> {
     const key = typeof infoOrKey === 'string' ? infoOrKey : infoOrKey.key;
 
     return this._cache.get(key) as StructureMetadata;
   }
 
-  getAll(): Array<{ key: string; meta: StructureMetadata }> {
+  all(): Array<{ key: string; meta: StructureMetadata }> {
     return Array.from(this._cache.entries()).map((m) => ({
       key: m[0],
       meta: m[1],
     }));
   }
 
-  loadFromServer(): Observable<void> {
+  load(): Observable<void> {
     this.clear();
     const url = this._url + 'Rest/Common/GetStructureMetadata/';
     return this.http.post<{ Value: string }>(url, {}).pipe(

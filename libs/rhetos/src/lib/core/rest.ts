@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, delay, timeout } from 'rxjs/operators';
-import { FloRhetosModule } from '../rhetos.module';
+import { RhetosModule } from '../rhetos.module';
 import { RHETOS_CONFIG, RhetosConfig } from './config';
 
 export interface RequestData {
@@ -14,7 +14,7 @@ export interface RequestData {
 
 export type HttpMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-@Injectable({ providedIn: FloRhetosModule })
+@Injectable({ providedIn: RhetosModule })
 export class RhetosRestService {
   protected _rootUrl: string;
   protected delete404OK: boolean;
