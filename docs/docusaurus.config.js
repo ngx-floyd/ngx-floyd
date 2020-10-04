@@ -46,7 +46,7 @@ module.exports = {
           items: [
             {
               label: 'GitHub',
-              href: 'ttps://github.com/ngx-floyd/ngx-floyd',
+              href: 'https://github.com/ngx-floyd/ngx-floyd',
             },
           ],
         },
