@@ -52,32 +52,38 @@ function Home() {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
-      <header className={clsx('hero hero--primary', styles.heroBanner)}>
+      <header className={clsx('hero', styles.heroBanner)}>
         <div className="container">
           <div className="flex">
-            <h1 className="hero__subtitle">
-              <span>&#x1F311;</span>
-              <span> Documentation for ngx-floyd packages</span>
-            </h1>
+            <img className="logo" src="img/logo.svg" />
           </div>
-          <img className="logo" src="img/logo.svg" />
         </div>
+        <Link className="link-get-started" to={useBaseUrl('docs/rhetos/overview')}>
+          GET STARTED
+        </Link>
       </header>
-      <main>
-        {features && features.length > 0 && (
-          <section className={styles.features}>
-            <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-      </main>
+
+      <main className="main"></main>
     </Layout>
   );
 }
 
 export default Home;
+
+// <main><img className="logo" src="img/logo.svg" /></main>
+
+// <h1 className="hero__title">
+//   <strong className="c">ngx-floyd</strong> packages documentation
+// </h1>
+
+// {features && features.length > 0 && (
+//   <section className={styles.features}>
+//     <div className="container">
+//       <div className="row">
+//         {features.map((props, idx) => (
+//           <Feature key={idx} {...props} />
+//         ))}
+//       </div>
+//     </div>
+//   </section>
+// )}

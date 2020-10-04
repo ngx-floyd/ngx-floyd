@@ -27,3 +27,34 @@
 .navbar__title {
   font-size: 1.2em;
 }
+
+.logo {
+  height: 400px;
+}
+
+/*.main-wrapper {*/
+/*  background: #49556a;*/
+/*}*/
+
+/*.main {*/
+/*  display: flex;*/
+/*  margin-bottom: 36px;*/
+/*}*/
+
+.hero {
+  background: #49556a;
+}
+
+.link-get-started {
+  margin: auto;
+  margin-top: 38px;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+  color: white;
+  background: #303846;
+}
+
+.heroBanner_src-pages- {
+  flex-direction: column;
+}

@@ -13,11 +13,11 @@ import { getQueryHttpParams } from './util';
 import { Entity } from '../entity/interfaces';
 
 export class QueryableService<T extends Entity> extends StructureService {
-  getbyId(id: string): Observable<T> {
+  single(id: string): Observable<T> {
     return this.restService.request<T>(this._key, 'GET', id);
   }
 
-  getAll(): Observable<T[]> {
+  all(): Observable<T[]> {
     return this.restService.request<{ Records: T[] }>(this._key, 'GET').pipe(pluck('Records'));
   }
 
