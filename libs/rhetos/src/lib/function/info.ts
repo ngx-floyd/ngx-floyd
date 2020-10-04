@@ -16,5 +16,5 @@ export function createFunctionInfo<T, R>(
 export type FunctionInfoOrKey<T = unknown, R = unknown> = FunctionInfo<T, R> | string;
 
 export function getFunctionKey(infoOrKey: FunctionInfoOrKey) {
-  return isObject(infoOrKey) ? (infoOrKey as FunctionInfo).reqInfo.key : (infoOrKey as string);
+  return isObject(infoOrKey) ? (infoOrKey as FunctionInfo).reqInfo.path : (infoOrKey as string);
 }
