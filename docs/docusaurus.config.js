@@ -1,7 +1,7 @@
 module.exports = {
   title: 'ngx-floyd',
   tagline: 'Collection of libraries',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://ngx-floyd.netlify.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
