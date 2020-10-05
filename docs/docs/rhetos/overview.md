@@ -58,8 +58,8 @@ constructor(private rhetosRest: RhetosRest) {
 ngOnInit() {
   this.principalService.recordsWithCount((query) =>
     query
-      .take(10)
-      .skip(20)
+      .skip(10)
+      .take(20)
       .orderBy('Name')
       .filterBy(Common.SmartSearchInfo, { Pattern: 'test' })
       .where('Active', 'Equals', true)
