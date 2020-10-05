@@ -1,7 +1,7 @@
 export interface StructureInfo<T = unknown> {
-  path: string;
+  key: string;
 }
 
-export function createStructureInfo<T>(path: string): StructureInfo<T> {
-  return { path: path };
+export function createStructureInfo<T>(key: string): StructureInfo<T> {
+  return { key };
 }

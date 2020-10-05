@@ -41,7 +41,7 @@ export class RhetosMetadata {
   }
 
   for<T>(infoOrKey: StructureInfo<T> | string): StructureMetadata<T> {
-    const key = typeof infoOrKey === 'string' ? infoOrKey : infoOrKey.path;
+    const key = typeof infoOrKey === 'string' ? infoOrKey : infoOrKey.key;
 
     return this._cache.get(key) as StructureMetadata;
   }

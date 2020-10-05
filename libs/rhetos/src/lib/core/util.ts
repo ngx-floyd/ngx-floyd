@@ -4,5 +4,5 @@ import { StructureInfo } from '../structure/info';
 export type InfoOrKey<T = unknown> = StructureInfo<T> | string;
 
 export function getKey(infoOrKey: InfoOrKey) {
-  return isObject(infoOrKey) ? (infoOrKey as StructureInfo).path : (infoOrKey as string);
+  return isObject(infoOrKey) ? (infoOrKey as StructureInfo).key : (infoOrKey as string);
 }
