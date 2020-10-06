@@ -1,7 +1,7 @@
 ---
 id: action
 title: Action
-slug: /rhetos/rest/action
+slug: /rhetos/rest-services/action
 ---
 ***Rhetos Concept*** : Action
 

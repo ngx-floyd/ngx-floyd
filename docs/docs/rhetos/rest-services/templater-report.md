@@ -1,7 +1,7 @@
 ---
 id: templater-report
 title: TemplaterReport
-slug: /rhetos/rest/templater-report
+slug: /rhetos/rest-services/templater-report
 ---
 ***Rhetos Concept*** : TemplaterReport
 

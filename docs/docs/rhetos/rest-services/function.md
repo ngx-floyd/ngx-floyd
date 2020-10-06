@@ -1,7 +1,7 @@
 ---
 id: function
 title: Function
-slug: /rhetos/rest/function
+slug: /rhetos/rest-services/function
 ---
 ***Rhetos Concept*** : Function
 

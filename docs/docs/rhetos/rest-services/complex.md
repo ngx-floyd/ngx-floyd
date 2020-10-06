@@ -1,9 +1,9 @@
 ---
 id: complex
 title: Complex
-slug: /rhetos/rest/complex
+slug: /rhetos/rest-services/complex
 ---
-***Rhetos Concept*** : ComplexStructure
+***Rhetos Concept*** : ComplexStructure(CreateSave)
 
 ## Usage
 

@@ -9,7 +9,7 @@ identify which data structure we are using.
 
 StructureInfo's are generated with ***Rhetos.FloydExtensions*** plugin alongside interfaces(models) for every data structure in our Rhetos application.
 
-Example: 
+#### Example: 
 ```typescript title="rhetos-model.ts"
 export namespace Common {
   ...
@@ -22,3 +22,19 @@ export namespace Common {
   ...
 }
 ```
+
+:::info
+Additional benefit of using `StructureInfo` constants is that we don't need to specify generic type of our model because of Typescript's type inference.
+
+For example, instead of writing something like this:
+```ts
+this.rhetosRest.forEntity<Common.Principal>('Common/Principal')
+```
+
+we can just write it like this:
+```ts
+this.rhetosRest.forEntity(Common.PrincipalInfo)
+```
+
+and still get all the benefits like we declared the type specifically.
+:::

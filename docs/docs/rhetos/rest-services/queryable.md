@@ -1,7 +1,7 @@
 ---
 id: queryable
 title: Queryable
-slug: /rhetos/rest/queryable
+slug: /rhetos/rest-services/queryable
 ---
 :::info
 `QueryableService` is used for data structures that have queryable data. ***RhetosConcepts***: Browse, SqlQueryable...

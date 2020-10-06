@@ -14,9 +14,9 @@ It implements several services for data access and metadata utilizing
 `Rhetos.FloydExtensions`, a DSL plugin module that includes typescript model generator and rest endpoint for
 fetching model metadata.
 
-Example of a generated model
+#### Example of a generated model
 
-```typescript title="rhetos-model.ts"
+```ts title="rhetos-model.ts"
 export namespace Common {
   ...
   export const PrincipalInfo = createStructureInfo<Common.Principal>('Common/Principal');
@@ -28,8 +28,10 @@ export namespace Common {
   ...
 }
 ```
-Example of generated metadata
-```typescript
+
+#### Example of generated metadata  
+
+```ts
 { 
     key: "Common/Principal", 
     serviceType: "Entity", 
@@ -46,7 +48,8 @@ Example of generated metadata
 } 
 ```
 
-Query example
+#### Query example
+
 ```ts title="app.component.ts"
 ...
 private principalService: EntityService<Common.Principal>;

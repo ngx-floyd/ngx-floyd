@@ -1,6 +1,6 @@
 ---
 id: metadata
-title: Metadata
+title: RhetosMetadata
 slug: /rhetos/metadata
 ---
 
