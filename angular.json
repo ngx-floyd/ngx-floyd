@@ -21,10 +21,7 @@
             "polyfills": "apps/playground/src/polyfills.ts",
             "tsConfig": "apps/playground/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/playground/src/favicon.ico",
-              "apps/playground/src/assets"
-            ],
+            "assets": ["apps/playground/src/favicon.ico", "apps/playground/src/assets"],
             "styles": ["apps/playground/src/styles.less"],
             "scripts": []
           },
@@ -79,10 +76,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/playground/tsconfig.app.json",
-              "apps/playground/tsconfig.spec.json"
-            ],
+            "tsConfig": ["apps/playground/tsconfig.app.json", "apps/playground/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!apps/playground/**/*"]
           }
         },
@@ -144,10 +138,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/rhetos/tsconfig.lib.json",
-              "libs/rhetos/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/rhetos/tsconfig.lib.json", "libs/rhetos/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/rhetos/**/*"]
           }
         },
@@ -187,10 +178,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/core/tsconfig.lib.json",
-              "libs/core/tsconfig.spec.json"
-            ],
+            "tsConfig": ["libs/core/tsconfig.lib.json", "libs/core/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**", "!libs/core/**/*"]
           }
         },
@@ -198,6 +186,45 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      }
+    },
+    "table": {
+      "projectType": "library",
+      "root": "libs/table",
+      "sourceRoot": "libs/table/src",
+      "prefix": "flo",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/table/tsconfig.lib.json",
+            "project": "libs/table/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/table/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/table/tsconfig.lib.json", "libs/table/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**", "!libs/table/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/table/jest.config.js",
             "passWithNoTests": true
           }
         }
