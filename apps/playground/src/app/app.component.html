@@ -1,1 +1,15 @@
-<ngx-floyd-rhetos-rest></ngx-floyd-rhetos-rest>
+<div class="container">
+  <nz-tabset>
+    <nz-tab nzTitle="Vertical">
+      <flo-form layout="vertical" [model]="model" [fields]="fields" (floSubmit)="onSubmit($event)">
+        <button>Spremi</button>
+      </flo-form>
+    </nz-tab>
+    <nz-tab nzTitle="Horizontal">
+      <flo-form layout="horizontal" [fields]="fields" (floSubmit)="onSubmit($event)"></flo-form>
+    </nz-tab>
+    <nz-tab nzTitle="Inline">
+      <flo-form layout="inline" [fields]="fields" (floSubmit)="onSubmit($event)"></flo-form>
+    </nz-tab>
+  </nz-tabset>
+</div>

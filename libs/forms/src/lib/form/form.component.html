@@ -1,0 +1,9 @@
+<form nz-form [formGroup]="form" [nzLayout]="layout" (ngSubmit)="onSubmit()">
+  <formly-form
+    [form]="form"
+    [fields]="fields"
+    [model]="model"
+    (modelChange)="onModelChange($event)"
+  ></formly-form>
+  <ng-content></ng-content>
+</form>
