@@ -7,11 +7,14 @@ import {
   TrackByFunction,
   ViewEncapsulation,
 } from '@angular/core';
+import { newGuid } from '@ngx-floyd/core';
 import { NzTableSortOrder } from 'ng-zorro-antd/table';
 import { Observable } from 'rxjs';
+import { FloColumnResizeService } from './columns/resize.service';
+import { FloDomService } from './core/dom.service';
 import { FloDataStore } from './data/data.store';
 import { nzToFloSortOrder } from './data/util';
-import { FloColDef, FloTableOptions, FloTableSelection } from './interfaces';
+import { FloColDef, FloTableOptions, FloTableSelection, FloTableSize } from './interfaces';
 import { FloOptionsStore } from './options/options.store';
 import { RowNode } from './rows/interfaces';
 import { FloRowService } from './rows/service';
@@ -20,11 +23,20 @@ import { FloRowStore } from './rows/store';
 @Component({
   selector: 'flo-table',
   templateUrl: './table.component.html',
-  providers: [FloOptionsStore, FloDataStore, FloRowService, FloRowStore],
+  providers: [
+    FloOptionsStore,
+    FloDataStore,
+    FloRowService,
+    FloRowStore,
+    FloColumnResizeService,
+    FloDomService,
+  ],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
+  TABLE_ID: string = `t_${newGuid()}`;
+
   @Input() set data(val: any[]) {
     const data = val ?? [];
 
@@ -45,6 +57,8 @@ export class TableComponent implements OnInit {
   // Selection
   @Input() selection?: FloTableSelection;
 
+  @Input() size: FloTableSize = 'default';
+
   @Input() options?: FloTableOptions;
 
   @Output() queryParamsChange = this.dataStore.queryParams$;
@@ -55,7 +69,13 @@ export class TableComponent implements OnInit {
   _pageIndex$: Observable<number>;
   _pageSize$: Observable<number>;
 
-  constructor(private dataStore: FloDataStore, private rowsStore: FloRowStore) {
+  constructor(
+    private optionsStore: FloOptionsStore,
+    private dataStore: FloDataStore,
+    private rowsStore: FloRowStore,
+  ) {
+    this.optionsStore.setTableId(this.TABLE_ID);
+
     this._data$ = this.dataStore.data$;
     this._total$ = this.dataStore.total$;
     this._pageIndex$ = this.dataStore.pageIndex$;

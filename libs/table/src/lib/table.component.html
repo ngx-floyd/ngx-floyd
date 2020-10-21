@@ -1,32 +1,35 @@
-<nz-table
-  #nzTable
-  nzSize="small"
-  nzTableLayout="fixed"
-  [nzData]="_data$ | ngrxPush"
-  [nzTotal]="_total$ | ngrxPush"
-  [nzPageIndex]="_pageIndex$ | ngrxPush"
-  [nzPageSize]="_pageSize$ | ngrxPush"
-  [nzShowSizeChanger]="true"
-  [nzFrontPagination]="!serverSide"
-  (nzPageIndexChange)="onPageIndexChange($event)"
-  (nzPageSizeChange)="onPageSizeChange($event)"
-  (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
->
-  <thead>
-    <tr>
-      <th
-        *ngFor="let col of columns"
-        nzShowSort
-        [nzSortFn]="true"
-        (nzSortOrderChange)="onSortOrderChange(col.field, $event)"
-      >
-        {{ col.title }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of nzTable.data; trackBy: rowTrackByFn">
-      <td *ngFor="let col of columns">{{ item[col.field] }}</td>
-    </tr>
-  </tbody>
-</nz-table>
+<div class="flo-table-container" [ngClass]="'flo-table-' + size">
+  <nz-table
+    #nzTable
+    class="flo-table"
+    [ngClass]="[TABLE_ID]"
+    nzSize="small"
+    nzTableLayout="fixed"
+    [nzScroll]="{ y: '700px', x: '1600px' }"
+    [nzData]="_data$ | ngrxPush"
+    [nzTotal]="_total$ | ngrxPush"
+    [nzPageIndex]="_pageIndex$ | ngrxPush"
+    [nzPageSize]="_pageSize$ | ngrxPush"
+    [nzShowSizeChanger]="true"
+    [nzFrontPagination]="!serverSide"
+    (nzPageIndexChange)="onPageIndexChange($event)"
+    (nzPageSizeChange)="onPageSizeChange($event)"
+    (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+  >
+    <thead class="flo-table-header">
+      <tr class="flo-table-header-row">
+        <th *ngFor="let col of columns; let i = index" nzWidth="200px" class="flo-table-th">
+          <flo-header-cell [column]="col"></flo-header-cell>
+          <div class="flo-table-resize" flo-column-resize [index]="i"></div>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="flo-table-body">
+      <tr class="flo-table-row" *ngFor="let item of nzTable.data; trackBy: rowTrackByFn">
+        <td class="flo-table-cell" *ngFor="let col of columns" nzEllipsis>
+          {{ item[col.field] }}
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

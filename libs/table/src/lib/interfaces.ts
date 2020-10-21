@@ -4,12 +4,14 @@ export interface FloTableOptions {
   selection?: FloTableSelection;
 }
 
+export type FloTableSize = 'default' | 'small' | 'large';
 export type FloTableSelection = 'single' | 'multiple';
 
 // Columns
 export interface FloColDef {
   field?: string;
   title?: string;
+  width?: string;
 }
 
 // Query Params

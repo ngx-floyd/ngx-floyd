@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RhetosModule } from '@ngx-floyd/rhetos';
 import { TableModule } from '@ngx-floyd/table';
+import { NzIconTestModule } from 'ng-zorro-antd/icon/testing';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { TableComponent } from './table-test/table.component';
     ReactiveFormsModule,
     FormsModule,
     TableModule,
+    NzIconTestModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

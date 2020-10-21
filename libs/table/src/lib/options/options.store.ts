@@ -1,13 +1,33 @@
+import { Injectable } from '@angular/core';
 import { FloTableOptions } from '@ngx-floyd/table';
 import { FloComponentStore } from '../core/component-store';
 
+@Injectable()
 export class FloOptionsStore extends FloComponentStore<FloTableOptions> {
+  private _id = '';
+
+  setTableId(id: string) {
+    this._id = id;
+  }
+
   // Getters
+  getTableId() {
+    return this._id;
+  }
+
   getDataKey(): string | undefined {
     return 'ID';
   }
 
   isServerSide() {
+    return true;
+  }
+
+  isVirtualScroll() {
+    return false;
+  }
+
+  isVerticalScroll() {
     return true;
   }
 }

@@ -35,7 +35,7 @@ export class TableComponent implements OnInit {
     );
     this.meta = this.rhetosMeta.for(this.INFO);
     this.columns = Object.keys(this.meta.properties).map(
-      (key) => <FloColDef>{ field: key, title: key },
+      (key) => <FloColDef>{ field: key, title: key, width: '200px' },
     );
   }
 
