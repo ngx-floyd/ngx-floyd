@@ -1,0 +1,63 @@
+<div class="flo-pagination-container" *ngIf="vm$ | ngrxPush as vm">
+  <span>Zapisa na stranici</span>
+  <nz-select
+    [ngModel]="vm.pageSize"
+    (ngModelChange)="changePageSize($event)"
+    nzBorderless
+    style="margin-right: 16px; font-weight: 500;"
+  >
+    <nz-option
+      *ngFor="let o of vm.pageSizeOptions"
+      [nzValue]="o"
+      [nzLabel]="o.toString()"
+    ></nz-option>
+  </nz-select>
+
+  <span style="margin-right: 16px;">{{ vm.rangeLabel }}</span>
+  <button
+    class="flo-pagination-btn"
+    nz-button
+    nzType="default"
+    nzSize="default"
+    nzShape="circle"
+    *ngIf="vm.total"
+    [disabled]="!vm.hasPreviousPage"
+    (click)="firstPage()"
+  >
+    <i nz-icon nzType="vertical-right"></i>
+  </button>
+  <button
+    class="flo-pagination-btn"
+    nz-button
+    nzType="default"
+    nzSize="default"
+    nzShape="circle"
+    [disabled]="!vm.hasPreviousPage"
+    (click)="previousPage()"
+  >
+    <i nz-icon nzType="left"></i>
+  </button>
+  <button
+    class="flo-pagination-btn"
+    nz-button
+    nzType="default"
+    nzSize="default"
+    nzShape="circle"
+    [disabled]="!vm.hasNextPage"
+    (click)="nextPage()"
+  >
+    <i nz-icon nzType="right"></i>
+  </button>
+  <button
+    class="flo-pagination-btn"
+    nz-button
+    nzType="default"
+    nzSize="default"
+    nzShape="circle"
+    *ngIf="vm.total"
+    [disabled]="!vm.hasNextPage"
+    (click)="lastPage()"
+  >
+    <i nz-icon nzType="vertical-left"></i>
+  </button>
+</div>

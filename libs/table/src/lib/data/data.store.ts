@@ -16,7 +16,7 @@ export const getDefaultDataState = (): DataState => ({
   data: [],
   total: 0,
   pageIndex: 1,
-  pageSize: 10,
+  pageSize: 30,
   sortArray: [],
   filterModel: {},
   currentPageData: [],

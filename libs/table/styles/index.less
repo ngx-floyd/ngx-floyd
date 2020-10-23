@@ -1,4 +1,6 @@
-@flo-table-border: 1px solid #c9d0db;
+@import 'pagination';
+@flo-table-border: 1px solid #c9d0db; // #c9d0db
+
 //@flo-table-border: 1px solid #babfc7;
 @flo-table-border-radius: 0;
 @flo-table-header-background: #f8f8f8;
@@ -15,8 +17,8 @@
 @flo-table-large-row-padding: 8px;
 
 .flo-table-container {
+  border: @flo-table-border;
   .flo-table {
-    border: @flo-table-border;
     background: @flo-table-header-background;
 
     .ant-table-header {
@@ -30,7 +32,7 @@
       border-top: @flo-table-border;
       border-bottom: @flo-table-border;
       //}
-      overflow: auto !important; // hide scrollbar when not needed
+      //overflow: auto !important; // hide scrollbar when not needed
     }
   }
 
@@ -148,7 +150,7 @@
   }
 
   .ant-table-header {
-    overflow: hidden !important;
+    //overflow: hidden !important;
   }
 
   //.ant-table-thead > tr > th {
@@ -265,6 +267,13 @@
   ///////////////////
   // SIZE SPECIFIC //
   ///////////////////
+  &.flo-table-tiny {
+    .flo-table-header-cell,
+    .flo-table-cell {
+      height: 31px;
+    }
+  }
+
   &.flo-table-small {
     .flo-table-header-cell,
     .flo-table-cell {
@@ -283,6 +292,44 @@
     .flo-table-header-cell,
     .flo-table-cell {
       height: 55px;
+    }
+  }
+
+  &.flo-table-huge {
+    .flo-table-header-cell,
+    .flo-table-cell {
+      height: 63px;
+    }
+  }
+}
+
+// Test
+.flo-table-row-action-icon {
+  cursor: pointer;
+  font-size: 1.12em;
+
+  border-radius: 50%;
+  /* border-width: 5px; */
+  padding: 6px;
+  &:hover,
+  &:focus {
+    background: #eeeeee;
+  }
+
+  &.primary {
+    color: #1890ff;
+    &:hover {
+      background: #eeeeee;
+      //background: rgba(85, 171, 250, 0.17);
+    }
+  }
+
+  &.danger {
+    //color: #ff5a5a;
+    &:hover {
+      color: red;
+      background: #eeeeee;
+      //background: #ff5a5a2b;
     }
   }
 }

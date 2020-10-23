@@ -1,10 +1,11 @@
 <div style="padding: 24px;">
   <flo-table
-    size="default"
+    size="small"
     [serverSide]="true"
     [data]="(dataRes$ | async)?.records"
     [total]="(dataRes$ | async)?.totalCount"
     [columns]="columns"
+    [resizableColumns]="true"
     (queryParamsChange)="onQueryParamsChange($event)"
   ></flo-table>
 </div>

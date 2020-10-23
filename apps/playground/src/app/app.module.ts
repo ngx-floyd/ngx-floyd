@@ -24,5 +24,6 @@ import { TableComponent } from './table-test/table.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [TableComponent],
 })
 export class AppModule {}

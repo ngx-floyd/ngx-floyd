@@ -3,13 +3,12 @@
     #nzTable
     class="flo-table"
     [ngClass]="[TABLE_ID]"
-    nzSize="small"
     nzTableLayout="fixed"
-    [nzScroll]="{ y: '700px', x: '1600px' }"
+    [nzSize]="size === 'large' || size === 'huge' ? 'default' : 'small'"
+    [nzScroll]="{ y: '700px', x: '930px' }"
     [nzData]="_data$ | ngrxPush"
     [nzTotal]="_total$ | ngrxPush"
-    [nzPageIndex]="_pageIndex$ | ngrxPush"
-    [nzPageSize]="_pageSize$ | ngrxPush"
+    [nzShowPagination]="false"
     [nzShowSizeChanger]="true"
     [nzFrontPagination]="!serverSide"
     (nzPageIndexChange)="onPageIndexChange($event)"
@@ -18,18 +17,86 @@
   >
     <thead class="flo-table-header">
       <tr class="flo-table-header-row">
-        <th *ngFor="let col of columns; let i = index" nzWidth="200px" class="flo-table-th">
+        <th class="flo-table-th" nzWidth="40px" [nzChecked]="false"></th>
+        <!--        <th class="flo-table-th" nzWidth="110px">-->
+        <!--          <div-->
+        <!--            *ngIf="resizableColumns"-->
+        <!--            class="flo-table-resize"-->
+        <!--            flo-column-resize-->
+        <!--            [index]="1"-->
+        <!--          ></div>-->
+        <!--        </th>-->
+        <th
+          *ngFor="let col of columns; let i = index"
+          [nzWidth]="col.width || '200px'"
+          class="flo-table-th"
+        >
           <flo-header-cell [column]="col"></flo-header-cell>
-          <div class="flo-table-resize" flo-column-resize [index]="i"></div>
+          <div
+            *ngIf="resizableColumns"
+            class="flo-table-resize"
+            flo-column-resize
+            [index]="i + 1"
+          ></div>
         </th>
       </tr>
     </thead>
     <tbody class="flo-table-body">
       <tr class="flo-table-row" *ngFor="let item of nzTable.data; trackBy: rowTrackByFn">
+        <td class="flo-table-cell" [nzChecked]="false"></td>
+
         <td class="flo-table-cell" *ngFor="let col of columns" nzEllipsis>
           {{ item[col.field] }}
         </td>
       </tr>
     </tbody>
   </nz-table>
+  <flo-pagination
+    [pageIndex]="_pageIndex$ | ngrxPush"
+    [pageSize]="_pageSize$ | ngrxPush"
+    [length]="_total$ | ngrxPush"
+    (page)="onPageEvent($event)"
+  ></flo-pagination>
 </div>
+
+<ng-template #rowCheckbox>
+  <td nzLeft [nzChecked]="false"></td>
+</ng-template>
+
+<ng-template #rowActions>
+  <td nzLeft>
+    <i
+      class="flo-table-row-action-icon primary"
+      nz-icon
+      nzType="form"
+      nzTheme="outline"
+      nz-tooltip="Uredi"
+    ></i>
+    <i
+      class="flo-table-row-action-icon danger"
+      nz-icon
+      nzType="delete"
+      nzTheme="outline"
+      nz-tooltip="Briši"
+    ></i>
+    <i class="flo-table-row-action-icon" nz-icon nzType="ellipsis" nzTheme="outline"></i>
+  </td>
+</ng-template>
+
+<!--<td class="flo-table-cell">-->
+<!--  <i-->
+<!--    class="flo-table-row-action-icon primary"-->
+<!--    nz-icon-->
+<!--    nzType="form"-->
+<!--    nzTheme="outline"-->
+<!--    nz-tooltip="Uredi"-->
+<!--  ></i>-->
+<!--  <i-->
+<!--    class="flo-table-row-action-icon primary"-->
+<!--    nz-icon-->
+<!--    nzType="delete"-->
+<!--    nzTheme="outline"-->
+<!--    nz-tooltip="Briši"-->
+<!--  ></i>-->
+<!--  <i class="flo-table-row-action-icon" nz-icon nzType="ellipsis" nzTheme="outline"></i>-->
+<!--</td>-->

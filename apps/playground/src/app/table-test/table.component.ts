@@ -16,6 +16,11 @@ export class TableComponent implements OnInit {
   dataRes$: Observable<RecordsWithCount<Adresar.DrzavaBrowse>>;
   meta: StructureMetadata<Adresar.DrzavaBrowse>;
   columns: FloColDef[];
+  // = [
+  //     { field: 'SluzbeniNaziv', title: 'Službeni naziv na engleskom', width: '350px' },
+  // { field: 'KratkiNazivNaEngleskom', title: 'Kratki naziv na engleskom' },
+  // { field: 'Active', title: 'Aktivan' },
+  // ];
   options: FloTableOptions = {
     serverSide: true,
   };
@@ -34,9 +39,9 @@ export class TableComponent implements OnInit {
       share(),
     );
     this.meta = this.rhetosMeta.for(this.INFO);
-    this.columns = Object.keys(this.meta.properties).map(
-      (key) => <FloColDef>{ field: key, title: key, width: '200px' },
-    );
+    this.columns = Object.keys(this.meta.properties)
+      // .filter((value, index) => index > 4)
+      .map((key) => <FloColDef>{ field: key, title: key });
   }
 
   ngOnInit(): void {}

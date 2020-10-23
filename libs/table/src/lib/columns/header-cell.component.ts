@@ -6,9 +6,9 @@ import { FloColDef } from '../interfaces';
   template: `
     <div class="flo-table-header-cell" *ngIf="column as col">
       <div class="flo-table-header-cell-label-container">
-        <div class="flo-table-header-cell-menu">
-          <i nz-icon nzType="menu" nzTheme="outline"></i>
-        </div>
+        <!--        <div class="flo-table-header-cell-menu">-->
+        <!--          <i nz-icon nzType="menu" nzTheme="outline"></i>-->
+        <!--        </div>-->
         <div class="flo-table-header-cell-label">
           <span class="flo-table-header-cell-label-text">
             {{ col.title || col.field }}
@@ -17,7 +17,7 @@ import { FloColDef } from '../interfaces';
             <i nz-icon nzType="filter" nzTheme="fill" style="font-size: 11px;"></i>
           </span>
           <span class="flo-table-header-cell-label-sort" *ngIf="true">
-            <!--            <flo-tablee-sort [sortOrder]="'asc'"></flo-tablee-sort>-->
+            <flo-tablee-sort [sortOrder]="'asc'"></flo-tablee-sort>
           </span>
         </div>
       </div>

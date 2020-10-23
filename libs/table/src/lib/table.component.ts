@@ -16,6 +16,7 @@ import { FloDataStore } from './data/data.store';
 import { nzToFloSortOrder } from './data/util';
 import { FloColDef, FloTableOptions, FloTableSelection, FloTableSize } from './interfaces';
 import { FloOptionsStore } from './options/options.store';
+import { PageEvent } from './paginator/pagination.store';
 import { RowNode } from './rows/interfaces';
 import { FloRowService } from './rows/service';
 import { FloRowStore } from './rows/store';
@@ -51,6 +52,7 @@ export class TableComponent implements OnInit {
   }
 
   @Input() columns: FloColDef[] = [];
+  @Input() resizableColumns: boolean = false;
 
   @Input() serverSide: boolean = false;
 
@@ -91,12 +93,12 @@ export class TableComponent implements OnInit {
   }
 
   onPageIndexChange($event: number) {
-    this.dataStore.setPageIndex($event);
+    // this.dataStore.setPageIndex($event);
   }
 
   onPageSizeChange($event: number) {
-    this.dataStore.setPageSize($event);
-    this.dataStore.setPageIndex(1);
+    // this.dataStore.setPageSize($event);
+    // this.dataStore.setPageIndex(1);
   }
 
   onSortOrderChange(field: string, order: NzTableSortOrder) {
@@ -105,4 +107,8 @@ export class TableComponent implements OnInit {
   }
 
   rowTrackByFn: TrackByFunction<RowNode> = (index, item) => item.id;
+
+  onPageEvent({ pageIndex, pageSize }: PageEvent) {
+    this.dataStore.setPagination({ pageIndex, pageSize });
+  }
 }
