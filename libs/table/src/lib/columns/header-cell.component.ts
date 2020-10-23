@@ -17,7 +17,7 @@ import { FloColDef } from '../interfaces';
             <i nz-icon nzType="filter" nzTheme="fill" style="font-size: 11px;"></i>
           </span>
           <span class="flo-table-header-cell-label-sort" *ngIf="true">
-            <flo-tablee-sort [sortOrder]="'asc'"></flo-tablee-sort>
+            <flo-table-sort [sortOrder]="'asc'"></flo-table-sort>
           </span>
         </div>
       </div>

@@ -1,11 +1,23 @@
 <div class="flo-table-container" [ngClass]="'flo-table-' + size">
+  <div
+    class="flo-table-header-row"
+    style="
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      background: #fafafa;
+      border-bottom: 1px solid #c9d0db;
+    "
+  >
+    <h3>Države</h3>
+  </div>
   <nz-table
     #nzTable
     class="flo-table"
     [ngClass]="[TABLE_ID]"
     nzTableLayout="fixed"
     [nzSize]="size === 'large' || size === 'huge' ? 'default' : 'small'"
-    [nzScroll]="{ y: '700px', x: '930px' }"
+    [nzScroll]="{ y: '600px', x: '1px' }"
     [nzData]="_data$ | ngrxPush"
     [nzTotal]="_total$ | ngrxPush"
     [nzShowPagination]="false"
@@ -18,14 +30,16 @@
     <thead class="flo-table-header">
       <tr class="flo-table-header-row">
         <th class="flo-table-th" nzWidth="40px" [nzChecked]="false"></th>
-        <!--        <th class="flo-table-th" nzWidth="110px">-->
-        <!--          <div-->
-        <!--            *ngIf="resizableColumns"-->
-        <!--            class="flo-table-resize"-->
-        <!--            flo-column-resize-->
-        <!--            [index]="1"-->
-        <!--          ></div>-->
-        <!--        </th>-->
+        <th class="flo-table-th" nzWidth="120px">
+          <div
+            *ngIf="resizableColumns"
+            class="flo-table-resize"
+            flo-column-resize
+            [index]="1"
+          ></div>
+          <!--        </th>-->
+        </th>
+
         <th
           *ngFor="let col of columns; let i = index"
           [nzWidth]="col.width || '200px'"
@@ -36,15 +50,45 @@
             *ngIf="resizableColumns"
             class="flo-table-resize"
             flo-column-resize
-            [index]="i + 1"
+            [index]="i + 2"
           ></div>
+        </th>
+      </tr>
+      <tr class="flo-table-header-row flo-table-filter-row">
+        <th></th>
+        <th></th>
+        <th
+          *ngFor="let col of columns; let i = index"
+          [nzWidth]="col.width || '200px'"
+          class="flo-table-th"
+        >
+          <div style="display: inline-flex; align-items: center; width: 100%;">
+            <input nz-input [nzSize]="'small'" />
+            <!--            <i nz-icon nzType="filter" nzTheme="outline" style="margin-left: 12px;"></i>-->
+          </div>
         </th>
       </tr>
     </thead>
     <tbody class="flo-table-body">
       <tr class="flo-table-row" *ngFor="let item of nzTable.data; trackBy: rowTrackByFn">
         <td class="flo-table-cell" [nzChecked]="false"></td>
-
+        <td class="flo-table-cell">
+          <i
+            class="flo-table-row-action-icon primary"
+            nz-icon
+            nzType="form"
+            nzTheme="outline"
+            nz-tooltip="Uredi"
+          ></i>
+          <i
+            class="flo-table-row-action-icon primary"
+            nz-icon
+            nzType="delete"
+            nzTheme="outline"
+            nz-tooltip="Briši"
+          ></i>
+          <i class="flo-table-row-action-icon" nz-icon nzType="ellipsis" nzTheme="outline"></i>
+        </td>
         <td class="flo-table-cell" *ngFor="let col of columns" nzEllipsis>
           {{ item[col.field] }}
         </td>

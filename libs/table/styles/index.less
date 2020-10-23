@@ -1,3 +1,4 @@
+@import 'overrides';
 @import 'pagination';
 @flo-table-border: 1px solid #c9d0db; // #c9d0db
 
@@ -275,6 +276,7 @@
   }
 
   &.flo-table-small {
+    .flo-table-header-row,
     .flo-table-header-cell,
     .flo-table-cell {
       height: 39px;
@@ -282,6 +284,7 @@
   }
 
   &.flo-table-default {
+    .flo-table-header-row,
     .flo-table-header-cell,
     .flo-table-cell {
       height: 47px;
@@ -289,6 +292,7 @@
   }
 
   &.flo-table-large {
+    .flo-table-header-row,
     .flo-table-header-cell,
     .flo-table-cell {
       height: 55px;
@@ -296,6 +300,7 @@
   }
 
   &.flo-table-huge {
+    .flo-table-header-row,
     .flo-table-header-cell,
     .flo-table-cell {
       height: 63px;
@@ -306,7 +311,6 @@
 // Test
 .flo-table-row-action-icon {
   cursor: pointer;
-  font-size: 1.12em;
 
   border-radius: 50%;
   /* border-width: 5px; */

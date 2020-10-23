@@ -1,6 +1,6 @@
 <div style="padding: 24px;">
   <flo-table
-    size="small"
+    size="default"
     [serverSide]="true"
     [data]="(dataRes$ | async)?.records"
     [total]="(dataRes$ | async)?.totalCount"
@@ -9,3 +9,5 @@
     (queryParamsChange)="onQueryParamsChange($event)"
   ></flo-table>
 </div>
+
+<!---->
